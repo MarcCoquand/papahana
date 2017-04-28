@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
+import Find from '/imports/ui/components/Find/Find';
 import Avatar from 'material-ui/Avatar';
-import '/client/styles/Header.css'
+import '/client/styles/Header.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
+//Don't know why but this has to be here....
 const styles = {
   large: {
-    margin: '1em auto',
+    margin: 'auto',
     display: 'block',
     width: 200,
     height: 200,
@@ -75,7 +77,7 @@ export default class Header extends Component {
               />
             </div>
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
-            {this.state.selectedButton === 'Find' ? '' : ''}
+            {this.state.selectedButton === 'Find' ? <Find /> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
             {this.state.selectedButton === 'Explore' ? '' : ''}

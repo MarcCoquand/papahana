@@ -1,0 +1,16 @@
+
+.cardContainer {
+  display: block;
+  margin: auto;
+  top-margin: 9em;
+}
+
+
+.text {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 0.5em;
+  font-family: 'Raleway', sans-serif;
+
+}
+
