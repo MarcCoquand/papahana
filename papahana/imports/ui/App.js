@@ -4,6 +4,7 @@ import { createContainer  } from 'meteor/react-meteor-data';
 import AccountUI from './components/AccountsUIWrapper'
 import { Meteor } from 'meteor/meteor'
 import Header from './components/Header'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
  
 
 export class App extends Component {
@@ -24,7 +25,8 @@ export class App extends Component {
         <div className="container">
           {this.props.currentUser? '' : <AccountUI />}
           <ul>
-            {this.props.currentUser? <Header user={Meteor.user()}/> : ''}
+            {this.props.currentUser? <MuiThemeProvider>
+              <Header user={Meteor.user()}/></MuiThemeProvider> : ''}
           </ul>
         </div>
 

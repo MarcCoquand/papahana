@@ -1,5 +1,5 @@
 .img-circle {
-  margin-top:25px;
+  margin-top:2em;
   border-radius: 50%;
   display: block;
   width: 100px;
@@ -7,10 +7,23 @@
   margin-left: auto;
   margin-right: auto;
 }
+.buttonContainer {
+  text-align: center;
+  margin-top: 1em;
+  display: block;
+  margin: '0 auto';
+
+}
+
+.buttonContainer .button {
+  display: inline-block;
+
+}
+
 .text {
   text-align: center;
-  font-size: 25px;
-  margin-top: 20px;
+  font-size: 2em;
+  margin-top: 1em;
   font-family: 'Raleway', sans-serif;
 
 }
