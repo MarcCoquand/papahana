@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '/client/styles/Header.css'
 import RaisedButton from 'material-ui/RaisedButton';
+import IconButton from 'material-ui/IconButton';
+import Avatar from 'material-ui/Avatar';
+import '/client/styles/Header.css'
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
 injectTapEventPlugin();
 
+const styles = {
+  large: {
+    margin: '1em auto',
+    display: 'block',
+    width: 200,
+    height: 200,
+  },
+}
  
 export default class Header extends Component {
 
@@ -24,6 +35,11 @@ export default class Header extends Component {
       selectedButton: 'Explore'
     })
   }
+  onClickProfile() {
+    this.setState({
+      selectedButton: 'Profile'
+    })
+  }
   
   getUserProfilePic(){
     if(this.props.user.profile) 
@@ -34,7 +50,13 @@ export default class Header extends Component {
     if (this.props.user) {
       return (
           <div>
-            <img className="img-circle" src={this.getUserProfilePic()}/>
+            <IconButton
+              style={styles.large}
+              onTouchTap={() => this.onClickProfile()}
+              iconClassName="img-circle">
+              <img className="img-circle" src={this.getUserProfilePic()}/>
+            </IconButton>
+
             <div className="text">
             {this.props.user.username}
             </div>
@@ -43,17 +65,23 @@ export default class Header extends Component {
                 className="button"
                 label="Find" 
                 onTouchTap={() => this.onClickFind()}
-                secondary={true}
                 disabled={this.state.selectedButton === 'Find'}
               />
               <RaisedButton 
                 className="button"
                 label="Explore" 
                 onTouchTap={() => this.onClickExplore()}
-                secondary={true}
                 disabled={this.state.selectedButton === 'Explore'}
               />
             </div>
+            {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
+            {this.state.selectedButton === 'Find' ? '' : ''}
+
+            {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
+            {this.state.selectedButton === 'Explore' ? '' : ''}
+
+            {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
+            {this.state.selectedButton === 'Profile' ? '' : ''}
           </div>
           );
     } else {
