@@ -1,6 +1,5 @@
 import React, { Component  } from 'react';
 import PropTypes from 'prop-types';
-import '/client/styles/profile.css'
 import AccountUI from './AccountsUIWrapper'
 
 export default class LoginWindow extends Component {
