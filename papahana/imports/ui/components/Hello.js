@@ -1,5 +1,6 @@
 import React, { Component  } from 'react';
 import PropTypes from 'prop-types';
+import '/client/styles/profile.css'
  
 export default class Hello extends Component {
   getUserProfilePic(){
@@ -11,7 +12,7 @@ export default class Hello extends Component {
       return (
           <div>
             Hello {this.props.user.username}
-            <img src={this.getUserProfilePic()}/>
+            <img className="img-circle" src={this.getUserProfilePic()}/>
           </div>
           );
     } else {

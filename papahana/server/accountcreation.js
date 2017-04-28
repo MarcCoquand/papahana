@@ -5,7 +5,7 @@ var getFbPicture = (accessToken) => { // make async call to grab the picture fro
   result = Meteor.http.get("https://graph.facebook.com/me", {
     params: {
       access_token: accessToken,
-      fields: 'picture'
+      fields: 'picture.width(300).height(300)',
 
     }
 
