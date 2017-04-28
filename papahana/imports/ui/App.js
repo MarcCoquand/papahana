@@ -26,8 +26,7 @@ export class App extends Component {
             <h1>Papahana</h1>
           </header>
 
-        <AccountUI />
-
+          {this.props.currentUser? '' : <AccountUI />}
           <ul>
             {this.props.currentUser? <Hello user={Meteor.user()}/> : ''}
           </ul>
