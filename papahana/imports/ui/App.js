@@ -3,7 +3,7 @@ import { createContainer  } from 'meteor/react-meteor-data';
 
 import AccountUI from './components/AccountsUIWrapper'
 import { Meteor } from 'meteor/meteor'
-import Hello from './components/Hello'
+import Header from './components/Header'
  
 
 export class App extends Component {
@@ -22,13 +22,9 @@ export class App extends Component {
   render() {
     return (
         <div className="container">
-          <header>
-            <h1>Papahana</h1>
-          </header>
-
           {this.props.currentUser? '' : <AccountUI />}
           <ul>
-            {this.props.currentUser? <Hello user={Meteor.user()}/> : ''}
+            {this.props.currentUser? <Header user={Meteor.user()}/> : ''}
           </ul>
         </div>
 

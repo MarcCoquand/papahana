@@ -1,0 +1,17 @@
+.img-circle {
+  margin-top:25px;
+  border-radius: 50%;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 20px;
+  font-family: 'Raleway', sans-serif;
+
+}
+

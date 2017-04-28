@@ -1,8 +1,8 @@
-import React, { Component  } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '/client/styles/profile.css'
+import '/client/styles/Header.css'
  
-export default class Hello extends Component {
+export default class Header extends Component {
   getUserProfilePic(){
     if(this.props.user.profile) 
       return this.props.user.profile.picture;
@@ -11,8 +11,10 @@ export default class Hello extends Component {
     if (this.props.user) {
       return (
           <div>
-            Hello {this.props.user.username}
             <img className="img-circle" src={this.getUserProfilePic()}/>
+            <div className="text">
+            {this.props.user.username}
+            </div>
           </div>
           );
     } else {
@@ -21,7 +23,8 @@ export default class Hello extends Component {
   }
 }
 
-Hello.propTypes =  {
+Header.propTypes =  {
     user:PropTypes.object,
 };
+
 
