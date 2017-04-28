@@ -3,14 +3,12 @@ import { createContainer  } from 'meteor/react-meteor-data';
 
 import AccountUI from './components/AccountsUIWrapper'
 import { Meteor } from 'meteor/meteor'
-import Hello from './components/Hello'
- 
+import LoginWindow from './components/LoginWindow'
 
 export class App extends Component {
   constructor (props) {
     super(props);
   }
-
 
   renderNotLogin(){
     return (
@@ -25,10 +23,9 @@ export class App extends Component {
           <header>
             <h1>Papahana</h1>
           </header>
-
-          {this.props.currentUser? '' : <AccountUI />}
+          {this.props.currentUser? '': <LoginWindow />}
           <ul>
-            {this.props.currentUser? <Hello user={Meteor.user()}/> : ''}
+            
           </ul>
         </div>
 
