@@ -1,14 +1,14 @@
 .welcome-text{
   text-align: center;
-  font-size: 50px;
-  margin-top: 140px;
-  font-family: 'Raleway', sans-serif;
+  font-size: 25px;
+  color:white;
+  font-family: 'Roboto', sans-serif;
 }
 
 .facebook-button{
   text-align: center;
-  font-size: 16px;
-  font-family: 'Raleway', sans-serif;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .video-background {
@@ -21,4 +21,13 @@
   width: auto;
   height: auto;
   z-index: -100;
+}
+
+.flux-centerblock{
+  margin-top: 270px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 1px;
+  width: 5px;
+  height: 300px;
 }
