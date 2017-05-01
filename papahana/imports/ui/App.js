@@ -6,6 +6,8 @@ import { Meteor } from 'meteor/meteor'
 import LoginWindow from './components/LoginWindow'
 
 import Header from './components/Header'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 export class App extends Component {
   constructor (props) {
@@ -23,7 +25,9 @@ export class App extends Component {
     return (
         <div className="container">
 
-          {this.props.currentUser? <Header user={Meteor.user()}/>: <LoginWindow />}
+            {this.props.currentUser? <MuiThemeProvider>
+              <Header user={Meteor.user()}/></MuiThemeProvider> :  <LoginWindow />}
+
 
         </div>
 
