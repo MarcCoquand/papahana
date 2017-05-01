@@ -3,3 +3,9 @@
   display: block;
 
 }
+
+
+body {
+    background-image: url('/noisy-texture.png');
+    background-repeat: repeat;
+}
