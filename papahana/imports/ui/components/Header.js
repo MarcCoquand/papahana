@@ -19,7 +19,7 @@ const styles = {
     height: 200,
   },
 }
- 
+
 export default class Header extends Component {
 
   componentWillMount(){
@@ -49,8 +49,9 @@ export default class Header extends Component {
     })
   }
   
+
   getUserProfilePic(){
-    if(this.props.user.profile) 
+    if(this.props.user.profile)
       return this.props.user.profile.picture;
   }
 
@@ -69,13 +70,13 @@ export default class Header extends Component {
             {this.props.user.username}
             </div>
             <div className="buttonContainer">
-              <RaisedButton 
+              <RaisedButton
                 className="button"
-                label="Find" 
+                label="Find"
                 onTouchTap={() => this.onClickFind()}
                 disabled={this.state.selectedButton === 'Find'}
               />
-              <RaisedButton 
+              <RaisedButton
                 className="button"
                 label="Create" 
                 onTouchTap={() => this.onClickExplore()}
@@ -110,5 +111,3 @@ export default class Header extends Component {
 Header.propTypes =  {
     user:PropTypes.object,
 };
-
-
