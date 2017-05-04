@@ -5,7 +5,6 @@ import AccountUI from './components/AccountsUIWrapper'
 import { Meteor } from 'meteor/meteor'
 import Header from './components/Header'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
- 
 
 export class App extends Component {
   constructor (props) {
@@ -20,6 +19,7 @@ export class App extends Component {
         </div>
         )
   }
+
   render() {
     return (
         <div className="container">

@@ -13,6 +13,7 @@ injectTapEventPlugin();
 const styles = {
   large: {
     margin: 'auto',
+    marginTop: '1em',
     display: 'block',
     width: 200,
     height: 200,
@@ -34,12 +35,17 @@ export default class Header extends Component {
   }
   onClickExplore() {
     this.setState({
-      selectedButton: 'Explore'
+      selectedButton: 'Create'
     })
   }
   onClickProfile() {
     this.setState({
       selectedButton: 'Profile'
+    })
+  }
+  onClickAttending() {
+    this.setState({
+      selectedButton: 'Attending'
     })
   }
   
@@ -71,16 +77,25 @@ export default class Header extends Component {
               />
               <RaisedButton 
                 className="button"
-                label="Explore" 
+                label="Create" 
                 onTouchTap={() => this.onClickExplore()}
-                disabled={this.state.selectedButton === 'Explore'}
+                disabled={this.state.selectedButton === 'Create'}
+              />
+              <RaisedButton 
+                className="button"
+                label="Your events" 
+                onTouchTap={() => this.onClickAttending()}
+                disabled={this.state.selectedButton === 'Attending'}
               />
             </div>
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
             {this.state.selectedButton === 'Find' ? <Find /> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
-            {this.state.selectedButton === 'Explore' ? '' : ''}
+            {this.state.selectedButton === 'Attending' ? '' : ''}
+
+            {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
+            {this.state.selectedButton === 'Create' ? '' : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
             {this.state.selectedButton === 'Profile' ? '' : ''}

@@ -6,7 +6,7 @@
 }
 .buttonContainer {
   text-align: center;
-  margin-top: 1em;
+  margin-top: 2em;
   display: block;
   margin: '0 auto';
 
@@ -20,7 +20,7 @@
 .text {
   text-align: center;
   font-size: 2em;
-  margin-top: 0.5em;
+  margin-top: 0.0em;
   font-family: 'Raleway', sans-serif;
 
 }
