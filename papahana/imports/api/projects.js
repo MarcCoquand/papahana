@@ -20,11 +20,48 @@ if (Meteor.isServer) {
 }
 
 Meteor.methods({
+  'projects.addUserToWishList'(projectId){
+    if (!Meteor.userId) {
+      throw new Meteor.Error ("ERROR: NOT AUTHORISED");
+    }
+
+    let user = Meteor.userId();
+    let project = Projects.find(projectId).fetch();
+    if (project == null || project.length > 1) {
+      throw new Meteor.Error ("ERROR: INVALID PROJECT ID");
+    }
+    let newWishList = project[0].wishList;
+    if (newWishList) {
+      if (newWishList.find((e) => (e === user))) {
+        throw new Meteor.Error ("ERROR: USER ALREADY IN PROJECT");
+      }
+        
+      newWishList.push(user);
+    } else {
+      newWishList = [user]
+    }
+
+
+    console.log(newWishList)
+    Projects.update(
+        projectId, 
+        {$set:{
+          "wishList": newWishList,}
+        }
+    )
+    console.log(Projects.find(projectId).fetch());
+
+  },
+
   'projects.insert'(title, date, loc, people, description) 
   {
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
+
+    // List of users who which to attend
+    let attending = [];
+    let wishList = [];
     //TODO VALIDATE
 
     Projects.insert({
@@ -32,9 +69,37 @@ Meteor.methods({
       date,
       loc,
       people,
-      description
+      attending,
+      wishList,
+      description,
     })
   },
 });
 
 
+//Adds a project to the user so that user can access it in attending events
+const addProjectToUser = (projectId, userId) => {
+  if (!this.userId) {
+    throw new Meteor.Error ("ERROR: NOT AUTHORISED");
+  }
+
+  let project = Projects.find(projectId).fetch();
+  
+  if (project == null || project.length > 1) {
+    throw new Meteor.Error ("ERROR: INVALID PROJECT ID");
+  }
+
+  if (Meteor.user().attending) {
+    let projectList = Meteor.user().attending;
+    projectList.push(project)
+  } else {
+    let projectList = [project];
+  }
+
+  Meteor.users.update(
+      {_id: userId},
+      {$set:{
+              "attending" : projectList
+            }})
+
+}

@@ -20,9 +20,11 @@ import { Meteor } from 'meteor/meteor';
 import { Projects } from '/imports/api/projects.js';
 import CardInfo from './CardInfo'
 import constants from '/imports/constants/findConstants'
+import NoCard from '/imports/ui/components/Find/NoCard'
 
 import Attend from '/imports/ui/components/Find/Attend'
 import Reject from '/imports/ui/components/Find/Reject'
+import { Grid, Row, Col } from 'react-flexbox-grid';
 
 // material-ui uses styles that are like this for some reason...
 const styles = {
@@ -38,36 +40,62 @@ class Find extends Component {
 
   componentWillMount(){
     this.state = {
-      projects: this.props.projects,
+      projectIndex: 0,
+      cardAvailable: true,
     }
   }
   renderCard() {
+    //Check that there exist projects
     if (this.props.projects.length > 0) {
       return (
-          <CardInfo project={this.props.projects[0]}/>
-          )
-    } else {
-      return ''
+        <CardInfo project={this.props.projects[this.state.projectIndex]}/>
+        )
+      //Check if project contains the user
+      //if so then jump to the next project
     }
   }
 
+  nextCard() {
+    //pop first item from queue for the user
+    index = this.state.projectIndex + 1;
+    //TODO: Remember which cards have already been seen by the user
+    if (this.props.projects[index]){
+      this.setState({
+        projectIndex: index,
+      })
+    } else {
+      this.setState({
+        cardAvailable: false,
+      })
+    }
+
+    //animate transition
+  }
+
   onClickAttend() {
+    Meteor.call(constants.PROJECTS_ADDUSERTOWISHLIST, this.props.projects[0])
     
+    this.nextCard()
+    console.log('attend')
   }
 
   onClickReject() {
-
+    this.nextCard()
+    console.log('reject')
   }
   
   render() {
-    console.log(this.state.projects)
     return(
         <div>
-          {this.renderCard()}
-          <div>
-            <Attend onClick={this.onClickAttend()}/>
-            <Reject onClick={this.onClickReject()}/>
-          </div>
+          {this.state.cardAvailable ? this.renderCard() : <NoCard />}
+          <Col xs>
+          <Row center="xs">
+            {this.state.cardAvailable ? 
+              <Attend onTap={() => this.onClickAttend()}/> : ''}
+            {this.state.cardAvailable ? 
+              <Reject onTap={() => this.onClickReject()}/> : ''}
+          </Row>
+          </Col>
         </div>
     )
   }

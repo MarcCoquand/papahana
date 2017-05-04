@@ -46,8 +46,6 @@ export default class CardInfo extends Component {
             {this.props.project.description}
           </CardText>
           <CardActions>
-          <FlatButton label="Action1" />
-          <FlatButton label="Action2" />
           </CardActions>
           </Card>
       </div>
