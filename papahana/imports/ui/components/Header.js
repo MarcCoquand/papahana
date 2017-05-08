@@ -6,6 +6,7 @@ import Find from '/imports/ui/components/Find/Find';
 import Avatar from 'material-ui/Avatar';
 import '/client/styles/Header.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import YourEvents from '/imports/ui/components/YourEvents/YourEvents';
 
 injectTapEventPlugin();
 
@@ -93,7 +94,8 @@ export default class Header extends Component {
             {this.state.selectedButton === 'Find' ? <Find /> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
-            {this.state.selectedButton === 'Attending' ? '' : ''}
+            {this.state.selectedButton === 'Attending' ? 
+              <YourEvents user={this.props.user}/> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
             {this.state.selectedButton === 'Create' ? '' : ''}

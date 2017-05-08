@@ -60,9 +60,17 @@ class Find extends Component {
     index = this.state.projectIndex + 1;
     //TODO: Remember which cards have already been seen by the user
     if (this.props.projects[index]){
-      this.setState({
-        projectIndex: index,
-      })
+      // If the user has already attended a card it should not show up again
+      console.log(Meteor.userId())
+      console.log(this.props.projects[index].wishList)
+      if (this.props.projects[index].wishList.includes(Meteor.userId())) {
+        this.nextCard()
+      }
+      else {
+        this.setState({
+          projectIndex: index,
+        })
+      }
     } else {
       this.setState({
         cardAvailable: false,
