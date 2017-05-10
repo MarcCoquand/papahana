@@ -33,7 +33,7 @@ Meteor.methods({
     let newWishList = project[0].wishList;
     if (newWishList) {
       if (newWishList.includes(Meteor.userId())) {
-        throw new Meteor.Error ("ERROR: USER ALREADY IN PROJECT");
+        throw new Meteor.Error ("ERROR: USER ALREADY IN WISHLIST");
       }
         
       newWishList.push(user);

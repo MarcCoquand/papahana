@@ -9,6 +9,7 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
+import '/client/styles/NoCard.css'
 
 const style = {
     marginRight: 20,
@@ -25,8 +26,10 @@ export default class NoCard extends Component {
   
   render() {
     return(
-        <div>
-          No available cards. :(
+        <div className="noprojecttext">
+          No projects available! Come back later or create one yourself!
+          
+          <img className="img" src={'NoProjects.png'}/>
         </div>
     )
   }
