@@ -6,6 +6,8 @@ import Find from '/imports/ui/components/Find/Find';
 import Avatar from 'material-ui/Avatar';
 import '/client/styles/Header.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import YourEvents from '/imports/ui/components/YourEvents/YourEvents';
+import Paper from 'material-ui/Paper';
 
 injectTapEventPlugin();
 
@@ -13,11 +15,19 @@ injectTapEventPlugin();
 const styles = {
   large: {
     margin: 'auto',
-    marginTop: '1em',
+    marginTop: '0em',
     display: 'block',
     width: 200,
     height: 200,
   },
+  paper: {
+    height: '20em',
+    width: '20em',
+    margin: 'auto',
+    marginTop: '7em',
+    display: 'block',
+  },
+
 }
 
 export default class Header extends Component {
@@ -59,16 +69,17 @@ export default class Header extends Component {
     if (this.props.user) {
       return (
           <div>
+            <Paper style={styles.paper} zDepth={1}>
             <IconButton
               style={styles.large}
               onTouchTap={() => this.onClickProfile()}
               iconClassName="img-circle">
               <img className="img-circle" src={this.getUserProfilePic()}/>
             </IconButton>
-
             <div className="text">
             {this.props.user.username}
             </div>
+
             <div className="buttonContainer">
               <RaisedButton
                 className="button"
@@ -89,11 +100,13 @@ export default class Header extends Component {
                 disabled={this.state.selectedButton === 'Attending'}
               />
             </div>
+            </Paper>
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
             {this.state.selectedButton === 'Find' ? <Find /> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
-            {this.state.selectedButton === 'Attending' ? '' : ''}
+            {this.state.selectedButton === 'Attending' ? 
+              <YourEvents user={this.props.user}/> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
             {this.state.selectedButton === 'Create' ? '' : ''}

@@ -29,7 +29,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 // material-ui uses styles that are like this for some reason...
 const styles = {
   cardContain: {
-    margin: '1em auto',
+    margin: '0em auto',
     display: 'block',
   },
 }
@@ -41,58 +41,61 @@ class Find extends Component {
   componentWillMount(){
     this.state = {
       projectIndex: 0,
-      cardAvailable: true,
+      cardAvailable: false,
     }
   }
+
+
   renderCard() {
     //Check that there exist projects
-    if (this.props.projects.length > 0) {
+    if (this.props.projects[this.state.projectIndex] != undefined){
       return (
         <CardInfo project={this.props.projects[this.state.projectIndex]}/>
         )
       //Check if project contains the user
       //if so then jump to the next project
+    } else {
+      return ''
     }
   }
 
-  nextCard() {
+  nextCard(index) {
     //pop first item from queue for the user
-    index = this.state.projectIndex + 1;
-    //TODO: Remember which cards have already been seen by the user
-    if (this.props.projects[index]){
+    if (this.props.projects[index] != undefined) {
       this.setState({
+        cardAvailable: true,
         projectIndex: index,
       })
-    } else {
-      this.setState({
-        cardAvailable: false,
-      })
-    }
-
-    //animate transition
+    } 
+    //TODO: animate transition
   }
 
   onClickAttend() {
-    Meteor.call(constants.PROJECTS_ADDUSERTOWISHLIST, this.props.projects[0])
+    Meteor.call(constants.PROJECTS_ADDUSERTOWISHLIST, 
+        this.props.projects[this.state.projectIndex])
     
-    this.nextCard()
-    console.log('attend')
+    this.nextCard(this.state.projectIndex)
   }
 
   onClickReject() {
-    this.nextCard()
-    console.log('reject')
+    index = this.state.projectIndex + 1;
+    this.setState({
+      projectIndex: index,
+    })
+    this.nextCard(index)
   }
+
   
   render() {
     return(
         <div>
-          {this.state.cardAvailable ? this.renderCard() : <NoCard />}
+          {(this.props.projects[this.state.projectIndex] != undefined) ? 
+            this.renderCard() : <NoCard />}
           <Col xs>
           <Row center="xs">
-            {this.state.cardAvailable ? 
+            {(this.props.projects[this.state.projectIndex] != undefined) ? 
               <Attend onTap={() => this.onClickAttend()}/> : ''}
-            {this.state.cardAvailable ? 
+            {(this.props.projects[this.state.projectIndex] != undefined) ? 
               <Reject onTap={() => this.onClickReject()}/> : ''}
           </Row>
           </Col>
@@ -107,7 +110,8 @@ Find.propTypes =  {
 export default createContainer (() => {
   Meteor.subscribe('projects');
   return {
-    projects: Projects.find({}).fetch(),
+    projects: Projects.find({wishList: {$not: 
+      {$eq:Meteor.userId()}}}).fetch(),
   };
 }, Find);
 
