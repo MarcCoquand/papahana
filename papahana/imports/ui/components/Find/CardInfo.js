@@ -39,25 +39,26 @@ export default class CardInfo extends Component {
   render() {
     return(
       <div className="cardContainer">
+      <Row>
+      <Col xs={12}>
+      <Row center="xs">
+      <Col xs={6} >
         <Card style={styles.cardContain}>
           <CardTitle 
             title={this.props.project.title} 
             subtitle={this.props.project.date} 
           />
           <CardText>
-            
-          <Row top="xs">
-            <Col xs={6} >
-              <img className="cardImg" src={'cooking.png'} />
-            </Col>
-            <Col xs={6} >
-            {this.props.project.description}
-            </Col>
-          </Row>
+              
+                    {this.props.project.description}
           </CardText>
           <CardActions>
           </CardActions>
-          </Card>
+        </Card>
+      </Col>
+      </Row>
+      </Col>
+      </Row>
       </div>
     )
   }
