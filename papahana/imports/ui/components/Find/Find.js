@@ -29,7 +29,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 // material-ui uses styles that are like this for some reason...
 const styles = {
   cardContain: {
-    margin: '1em auto',
+    margin: '0em auto',
     display: 'block',
   },
 }

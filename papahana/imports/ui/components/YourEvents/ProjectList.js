@@ -34,7 +34,7 @@ export default class ProjectList extends Component {
   }
 }
 ProjectList.propTypes =  {
-  projects: PropTypes.object.required,
+  projects: PropTypes.object.isRequired,
 };
 
 

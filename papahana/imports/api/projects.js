@@ -42,14 +42,12 @@ Meteor.methods({
     }
 
 
-    console.log(newWishList)
     Projects.update(
         projectId, 
         {$set:{
           "wishList": newWishList,}
         }
     )
-    console.log(Projects.find(projectId).fetch());
 
   },
 

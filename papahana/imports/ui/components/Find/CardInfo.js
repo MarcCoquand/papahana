@@ -18,11 +18,13 @@ import FlatButton from 'material-ui/FlatButton';
 import ReactDOM from "react-dom";
 import { Meteor } from 'meteor/meteor';
 import { Projects } from '/imports/api/projects.js';
+import { Grid, Row, Col } from 'react-flexbox-grid';
+import '/client/styles/Find.css'
 
 // material-ui uses styles that are like this for some reason...
 const styles = {
   cardContain: {
-    margin: '1em auto',
+    margin: '3em auto',
     display: 'block',
   },
 }
@@ -43,7 +45,15 @@ export default class CardInfo extends Component {
             subtitle={this.props.project.date} 
           />
           <CardText>
+            
+          <Row top="xs">
+            <Col xs={6} >
+              <img className="cardImg" src={'cooking.png'} />
+            </Col>
+            <Col xs={6} >
             {this.props.project.description}
+            </Col>
+          </Row>
           </CardText>
           <CardActions>
           </CardActions>
