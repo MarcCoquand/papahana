@@ -94,9 +94,9 @@ class Find extends Component {
           <Col xs>
           <Row center="xs">
             {(this.props.projects[this.state.projectIndex] != undefined) ? 
-              <Attend onTap={() => this.onClickAttend()}/> : ''}
-            {(this.props.projects[this.state.projectIndex] != undefined) ? 
               <Reject onTap={() => this.onClickReject()}/> : ''}
+            {(this.props.projects[this.state.projectIndex] != undefined) ? 
+              <Attend onTap={() => this.onClickAttend()}/> : ''}
           </Row>
           </Col>
         </div>
