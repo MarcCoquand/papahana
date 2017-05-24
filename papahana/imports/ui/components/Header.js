@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import Find from '/imports/ui/components/Find/Find';
+import Create from '/imports/ui/components/Create/Create';
 import Avatar from 'material-ui/Avatar';
 import '/client/styles/Header.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -48,7 +49,7 @@ export default class Header extends Component {
       selectedButton: 'Attending'
     })
   }
-  
+
 
   getUserProfilePic(){
     if(this.props.user.profile)
@@ -78,13 +79,13 @@ export default class Header extends Component {
               />
               <RaisedButton
                 className="button"
-                label="Create" 
+                label="Create"
                 onTouchTap={() => this.onClickExplore()}
                 disabled={this.state.selectedButton === 'Create'}
               />
-              <RaisedButton 
+              <RaisedButton
                 className="button"
-                label="Your events" 
+                label="Your events"
                 onTouchTap={() => this.onClickAttending()}
                 disabled={this.state.selectedButton === 'Attending'}
               />
@@ -96,7 +97,7 @@ export default class Header extends Component {
             {this.state.selectedButton === 'Attending' ? '' : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
-            {this.state.selectedButton === 'Create' ? '' : ''}
+            {this.state.selectedButton === 'Create' ? <Create /> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
             {this.state.selectedButton === 'Profile' ? '' : ''}

@@ -27,8 +27,6 @@ export class App extends Component {
 
             {this.props.currentUser? <MuiThemeProvider>
               <Header user={Meteor.user()}/></MuiThemeProvider> :  <LoginWindow />}
-
-
         </div>
 
         );
