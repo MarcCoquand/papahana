@@ -110,8 +110,9 @@ Find.propTypes =  {
 export default createContainer (() => {
   Meteor.subscribe('projects');
   return {
-    projects: Projects.find({wishList: {$not: 
-      {$eq:Meteor.userId()}}}).fetch(),
+    projects: Projects.find(
+      {$and: [{attending: {$not: {$eq:Meteor.userId()}}}, {wishlist: {$not: 
+      {$eq:Meteor.userId()}}}]}).fetch(),
   };
 }, Find);
 
