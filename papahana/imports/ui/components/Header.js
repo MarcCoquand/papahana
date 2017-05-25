@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import RaisedButton from 'material-ui/RaisedButton';
 import IconButton from 'material-ui/IconButton';
 import Find from '/imports/ui/components/Find/Find';
+import Profile from '/imports/ui/components/Profile/Profile';
 import Create from '/imports/ui/components/Create/Create';
 import Avatar from 'material-ui/Avatar';
 import '/client/styles/Header.css';
@@ -113,7 +114,7 @@ export default class Header extends Component {
             {this.state.selectedButton === 'Create' ? <Create /> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
-            {this.state.selectedButton === 'Profile' ? '' : ''}
+            {this.state.selectedButton === 'Profile' ? <Profile user={this.props.user}/> : ''}
           </div>
           );
     } else {
