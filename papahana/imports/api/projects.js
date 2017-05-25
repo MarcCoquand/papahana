@@ -32,41 +32,39 @@ Meteor.methods({
     }
     let newWishList = project[0].wishList;
     if (newWishList) {
-      if (newWishList.find((e) => (e === user))) {
-        throw new Meteor.Error ("ERROR: USER ALREADY IN PROJECT");
+      if (newWishList.includes(Meteor.userId())) {
+        throw new Meteor.Error ("ERROR: USER ALREADY IN WISHLIST");
       }
-        
+
       newWishList.push(user);
     } else {
       newWishList = [user]
     }
 
 
-    console.log(newWishList)
     Projects.update(
-        projectId, 
+        projectId,
         {$set:{
           "wishList": newWishList,}
         }
     )
-    console.log(Projects.find(projectId).fetch());
 
   },
 
-  'projects.insert'(title, date, loc, people, description) 
+  'projects.insert'(title, dat, loc, people, description, userId)
   {
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
     }
 
     // List of users who which to attend
-    let attending = [];
+    let attending = [userId];
     let wishList = [];
     //TODO VALIDATE
 
     Projects.insert({
       title,
-      date,
+      dat,
       loc,
       people,
       attending,
@@ -84,7 +82,7 @@ const addProjectToUser = (projectId, userId) => {
   }
 
   let project = Projects.find(projectId).fetch();
-  
+
   if (project == null || project.length > 1) {
     throw new Meteor.Error ("ERROR: INVALID PROJECT ID");
   }

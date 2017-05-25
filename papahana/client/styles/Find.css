@@ -1,4 +1,25 @@
 
+
+.cardImg {
+
+  width: 25em;
+  height: 25em;
+}
+.noprojecttext {
+  text-align: center;
+
+  font-size: 1.0em;
+  margin-top: 3.0em;
+  font-family: 'Raleway', sans-serif;
+}
+
+.imgSmiley{
+  display:block;
+  margin: 0 auto;
+  text-align: center;
+  width: 15em;
+  height: 15em;
+}
 .cardContainer {
   display: block;
   margin: auto;
@@ -22,4 +43,3 @@
   font-family: 'Raleway', sans-serif;
 
 }
-
