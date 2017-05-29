@@ -7,13 +7,6 @@ import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
 import '/client/styles/Find.css'
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import {Card, 
-        CardActions, 
-        CardHeader, 
-        CardMedia, 
-        CardTitle, 
-        CardText} from 'material-ui/Card';
-
 import FlatButton from 'material-ui/FlatButton';
 import ReactDOM from "react-dom";
 import { Meteor } from 'meteor/meteor';
@@ -26,15 +19,9 @@ import Attend from '/imports/ui/components/Find/Attend'
 import Reject from '/imports/ui/components/Find/Reject'
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
-// material-ui uses styles that are like this for some reason...
-const styles = {
-  cardContain: {
-    margin: '0em auto',
-    display: 'block',
-  },
-}
 
- 
+
+
 // Handles finding projects and the logic with the upvote and downvote buttons
 class Find extends Component {
 
@@ -45,12 +32,37 @@ class Find extends Component {
     }
   }
 
-
   renderCard() {
+    var imgUrl = this.props.projects[this.state.projectIndex].picture;
+
+       var divStyle = {
+           backgroundImage: 'url(' + imgUrl + ')'
+       }
     //Check that there exist projects
     if (this.props.projects[this.state.projectIndex] != undefined){
       return (
-        <CardInfo project={this.props.projects[this.state.projectIndex]}/>
+        <div className="main-box" >
+        <Row>
+            <Col xs={12} sm={12} md={7} className="findCard-picture" style={divStyle}>
+            <div className="card-invis"></div>
+            </Col>
+            <Col xs={12} sm={12} md={5} >
+             <CardInfo project={this.props.projects[this.state.projectIndex]}/>
+
+          <div className="submitButton">
+             <div className="findButtons">
+             {(this.props.projects[this.state.projectIndex] != undefined) ?
+               <Reject onTap={() => this.onClickReject()}/> : ''}
+            </div>
+            <div className="findButtons">
+             {(this.props.projects[this.state.projectIndex] != undefined) ?
+               <Attend onTap={() => this.onClickAttend()}/> : ''}
+            </div>
+          </div>
+            </Col>
+        </Row>
+        </div>
+
         )
       //Check if project contains the user
       //if so then jump to the next project
@@ -66,14 +78,14 @@ class Find extends Component {
         cardAvailable: true,
         projectIndex: index,
       })
-    } 
+    }
     //TODO: animate transition
   }
 
   onClickAttend() {
-    Meteor.call(constants.PROJECTS_ADDUSERTOWISHLIST, 
+    Meteor.call(constants.PROJECTS_ADDUSERTOWISHLIST,
         this.props.projects[this.state.projectIndex])
-    
+
     this.nextCard(this.state.projectIndex)
   }
 
@@ -85,21 +97,13 @@ class Find extends Component {
     this.nextCard(index)
   }
 
-  
+
   render() {
     return(
-        <div>
-          {(this.props.projects[this.state.projectIndex] != undefined) ? 
+      <div>
+          {(this.props.projects[this.state.projectIndex] != undefined) ?
             this.renderCard() : <NoCard />}
-          <Col xs>
-          <Row center="xs">
-            {(this.props.projects[this.state.projectIndex] != undefined) ? 
-              <Reject onTap={() => this.onClickReject()}/> : ''}
-            {(this.props.projects[this.state.projectIndex] != undefined) ? 
-              <Attend onTap={() => this.onClickAttend()}/> : ''}
-          </Row>
-          </Col>
-        </div>
+      </div>
     )
   }
 }
@@ -110,10 +114,7 @@ Find.propTypes =  {
 export default createContainer (() => {
   Meteor.subscribe('projects');
   return {
-    projects: Projects.find({wishList: {$not: 
+    projects: Projects.find({wishList: {$not:
       {$eq:Meteor.userId()}}}).fetch(),
   };
 }, Find);
-
-
-

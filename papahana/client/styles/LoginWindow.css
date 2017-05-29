@@ -1,14 +1,15 @@
 .welcome-text{
   text-align: center;
-  font-size: 25px;
+  font-size: 3em;
   color:white;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lilita One', cursive;
 }
 
 .facebook-button{
   text-align: center;
-  font-size: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  font-family: 'Lilita One';
+
 }
 
 .video-background {
@@ -25,9 +26,8 @@
 
 .flux-centerblock{
   margin-top: 270px;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0);
   padding: 1px;
-  width: 5px;
+  width: 50em;
   height: 300px;
 }

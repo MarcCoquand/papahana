@@ -23,11 +23,10 @@ export default class NoEvent extends Component {
     return(
       <div className="main-box">
       <Row>
-          <Col xs={12} sm={12} md={7} >
-          <div className="card-picture">
-          </div>
+          <Col xs={12} sm={12} md={7} className="card-picture">
+          <div className="card-invis"></div>
           </Col>
-          <Col xs={12} sm={12} md={5} >
+          <Col xs={12} sm={11} md={5} >
           <EventInfoInput />
           </Col>
       </Row>
