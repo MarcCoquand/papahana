@@ -15,16 +15,15 @@ export default class LoginWindow extends Component {
           <div>
             <video autoPlay loop className="video-background" muted>
               <source src=
-              "https://www.youtube.com/embed/XGSy3_Czz8k?autoplay=1"
-              type="video/mp4">
+              "/flower-bloom.mp4" type="video/mp4">
               </source>
             </video>
 
             <Row>
               <Col xs={12}>
                 <Row center="xs">
-                  <Col xs={5} className="flux-centerblock">
-                  <h1 className="welcome-text">Login to Papahana</h1>
+                  <Col xs={7} className="flux-centerblock">
+                  <h1 className="welcome-text">Welcome to Papahana</h1>
                   <div className="facebook-button"><AccountUI /></div>
                   </Col>
                 </Row>

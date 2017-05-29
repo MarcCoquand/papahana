@@ -9,7 +9,6 @@ import Avatar from 'material-ui/Avatar';
 import '/client/styles/Header.css';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import YourEvents from '/imports/ui/components/YourEvents/YourEvents';
-import Paper from 'material-ui/Paper';
 
 injectTapEventPlugin();
 
@@ -19,16 +18,16 @@ const styles = {
     margin: 'auto',
     marginTop: '0em',
     display: 'block',
-    width: 200,
-    height: 200,
+    width: 100,
+    height: 100,
   },
-  paper: {
-    height: '20em',
-    width: '20em',
-    margin: 'auto',
-    marginTop: '7em',
-    display: 'block',
+  headerBHutton:{
+    margin: 12,
   },
+  mediumIcon: {
+    width: 48,
+    height: 48,
+  }
 
 }
 
@@ -71,7 +70,6 @@ export default class Header extends Component {
     if (this.props.user) {
       return (
           <div>
-            <Paper style={styles.paper} zDepth={1}>
             <IconButton
               style={styles.large}
               onTouchTap={() => this.onClickProfile()}
@@ -82,32 +80,39 @@ export default class Header extends Component {
             {this.props.user.username}
             </div>
 
+
             <div className="buttonContainer">
               <RaisedButton
+                style={styles.headerBHutton}
                 className="button"
-                label="Find"
+                label="Explore"
+
                 onTouchTap={() => this.onClickFind()}
                 disabled={this.state.selectedButton === 'Find'}
               />
               <RaisedButton
                 className="button"
-                label="Create"
+                style={styles.headerBHutton}
+                label="New"
+
                 onTouchTap={() => this.onClickExplore()}
                 disabled={this.state.selectedButton === 'Create'}
               />
               <RaisedButton
                 className="button"
-                label="Your events"
+                style={styles.headerBHutton}
+                label="Created"
+                 
                 onTouchTap={() => this.onClickAttending()}
                 disabled={this.state.selectedButton === 'Attending'}
               />
             </div>
-            </Paper>
+
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
             {this.state.selectedButton === 'Find' ? <Find /> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}
-            {this.state.selectedButton === 'Attending' ? 
+            {this.state.selectedButton === 'Attending' ?
               <YourEvents user={this.props.user}/> : ''}
 
             {/* FILL THIS IN WITH THE IMPLEMENTED COMPONENT */}

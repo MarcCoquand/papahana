@@ -19,10 +19,6 @@ import FontIcon from 'material-ui/FontIcon';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Submit from '/imports/ui/components/Create/Submit'
 
-const style = {
-marginLeft: 40,
-
-};
 export default class EventInfoInput extends Component {
   componentWillMount(){
     this.state = {
@@ -33,7 +29,6 @@ export default class EventInfoInput extends Component {
       descInput:'',
     }
   }
-
   handleNameChange = (event) => {
      this.setState({
        titleInput: event.target.value,
@@ -65,22 +60,28 @@ export default class EventInfoInput extends Component {
   onSubmit = () => {
     Meteor.call(constants.PROJECTS_INSERT, this.state.titleInput,
     this.state.dateInput, this.state.locInput, this.state.peopleInput,
-    this.state.descInput, Meteor.userId())
-  }
+    this.state.descInput, Meteor.userId(), Meteor.user().profile.picture)
 
+    this.setState({
+      titleInput:"",
+      dateInput:undefined,
+      locInput:"",
+      peopleInput:"",
+      descInput:"",
+    });
+  }
   render() {
     return(
       <div className="input-text">
-      <h3>Project info
-
-      </h3>
+      <div className="titel">PROJECT INFO
+      </div>
        <TextField
              hintText="Project name"
              floatingLabelText="Project name"
              value={this.state.titleInput}
              onChange={this.handleNameChange}
              />
-      <br />
+
        <DatePicker
              hintText="Date"
              floatingLabelText="Date"
@@ -94,26 +95,24 @@ export default class EventInfoInput extends Component {
             value={this.state.locInput}
             onChange={this.handleLocChange}
             />
-  <br />
+
       <TextField
             hintText="Number of people"
             floatingLabelText="Number of people"
             value={this.state.peopleInput}
             onChange={this.handlePeopleChange}
             />
-  <br />
+
        <TextField
              hintText="Description"
 
              multiLine={true}
-             rows={3}
+             rows={2}
              value={this.state.descInput}
              onChange={this.handleDescChange}
            />
-  <br />
+
   <Submit onTap={() => this.onSubmit()}/>
-
-
       </div>
     )
   }

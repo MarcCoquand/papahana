@@ -1,26 +1,27 @@
 
 .img-circle {
   border-radius: 50%;
-  width: 6em;
-  height: 6em;
+  width: 3em;
+  height: 3em;
 }
 .buttonContainer {
   text-align: center;
-  margin-top: 1em;
+  margin-top: 0.5em;
   display: block;
   margin: '0 auto';
-
+  font-family: 'Roboto';
+  text-transform: uppercase;
 }
 
 .buttonContainer .button {
   display: inline-block;
-
+  font-family: 'Roboto';
+  text-transform: uppercase;
 }
 
 .text {
   text-align: center;
-  font-size: 2em;
+  font-size: 1em;
   margin-top: 0.0em;
-  font-family: 'Raleway', sans-serif;
-
+  color: white;
 }

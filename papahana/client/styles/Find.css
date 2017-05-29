@@ -1,13 +1,11 @@
 
 
 .cardImg {
-
   width: 25em;
   height: 25em;
 }
 .noprojecttext {
   text-align: center;
-
   font-size: 1.0em;
   margin-top: 3.0em;
   font-family: 'Raleway', sans-serif;
@@ -34,12 +32,14 @@
 }
 .buttonContainer .button {
   display: inline-block;
+
+  text-transform: uppercase;
 }
 
 .text {
   text-align: center;
   font-size: 2em;
   margin-top: 0.5em;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', cursive;
 
 }

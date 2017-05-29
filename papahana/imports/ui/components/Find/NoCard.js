@@ -23,12 +23,11 @@ export default class NoCard extends Component {
     this.state = {
     }
   }
-  
+
   render() {
     return(
         <div className="noprojecttext">
           No papahanas available! Come back later or create one yourself!
-          
           <img className="imgSmiley" src={'NoProjects.png'}/>
         </div>
     )
@@ -36,5 +35,3 @@ export default class NoCard extends Component {
 }
 NoCard.propTypes =  {
 };
-
-

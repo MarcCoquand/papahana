@@ -51,7 +51,7 @@ Meteor.methods({
 
   },
 
-  'projects.insert'(title, dat, loc, people, description, userId)
+  'projects.insert'(title, dat, loc, people, description, userId, picture)
   {
     if (!this.userId) {
       throw new Meteor.Error('not-authorized');
@@ -70,6 +70,7 @@ Meteor.methods({
       attending,
       wishList,
       description,
+      picture,
     })
   },
 });

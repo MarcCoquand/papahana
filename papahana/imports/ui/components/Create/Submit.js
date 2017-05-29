@@ -25,7 +25,7 @@ export default class Submit extends Component {
 
   render() {
     return(
-        <div>
+        <div className="submitButton">
          <FloatingActionButton
           className="button"
           style={style}
