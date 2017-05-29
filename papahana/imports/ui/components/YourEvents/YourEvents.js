@@ -17,7 +17,7 @@ class YourEvents extends Component {
     console.log(this.props.projectWishList)
       return (
           <div>
-            <ProjectList projects={this.props.projectWishList}/>
+            <ProjectList projects={this.props.projectAttendList}/>
           </div>
           )
   }
@@ -40,8 +40,6 @@ YourEvents.propTypes =  {
 export default createContainer (() => {
   Meteor.subscribe('projects');
   return {
-    projectsWishList: Projects.find({wishList: 
-      {$eq:Meteor.userId()}}).fetch(),
     projectsAttendList: Projects.find({attending: 
       {$eq:Meteor.userId()}}).fetch(),
   };
