@@ -27,7 +27,7 @@ Accounts.onCreateUser((options, user) => {
   user.emails = [{address: user.services.facebook.email}];
 
   if(options.profile) {
-    options.profile.picture = getFbPicture(user.services.facebook.accessToken);
+    options.profile.picture = getFbPicture(995383200620590);
     user.profile = options.profile; // We still want the default 'profile' behavior.
 
   }
